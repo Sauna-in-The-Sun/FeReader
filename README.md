@@ -1,2 +1,2 @@
 # FeReader
-PDF & EPUB Reader
+PDF & EPUB Viewer

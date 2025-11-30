@@ -9,6 +9,6 @@ PDF & EPUB Viewer
 
 ## Verify Integrity
 
-### Windows (PowerShell)
+### Windows PowerShell
 ```powershell
 Get-FileHash .\my_app_installer.exe -Algorithm SHA256

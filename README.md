@@ -19,7 +19,7 @@ Build tool
 ```powershell
 Get-FileHash .\fereader_installer.exe -Algorithm SHA256
 ```
-### Linux/Mac
+### Linux
 ```terminal
 sha256sum fereader_installer.exe
 ```

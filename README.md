@@ -9,7 +9,7 @@ Build tool
 ## Installer
 **Windows Installer (v1.1)**
 - File: `fereader_installer.exe`
-- SHA256: `A1DB22AF86808A0E9175A80E2B8C3047DAF903811B7787CFB80A40D5AAED71AB`
+- SHA256: `0226f9fc7a92913c28236231a7f8454e938ac8147792f2005b588c1bc5f3b82b`
 
 ## Verify Integrity
 

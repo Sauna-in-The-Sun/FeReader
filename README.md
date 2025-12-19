@@ -8,7 +8,7 @@ Build tool
 - VSCode 1.107.1
 - Inno Setup 6.6.1 https://jrsoftware.org/isdl.php
 
-Supported languages
+UI Supported languages
 - English
 - Thai
 - More languages ​​are coming soon

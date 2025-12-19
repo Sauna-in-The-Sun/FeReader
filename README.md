@@ -8,6 +8,11 @@ Build tool
 - VSCode 1.107.1
 - Inno Setup 6.6.1 https://jrsoftware.org/isdl.php
 
+Supported languages
+- English
+- Thai
+- Other languages coming soon
+
 ## Installer
 **Windows Installer (v1.1)**
 - File: `fereader_installer.exe`

@@ -5,6 +5,7 @@ Build tool
 - Python 3.13.0
 - Pyinstaller 6.11.0
 - Qt6 http://pyside.org/
+- VSCode 1.107.1
 - Inno Setup 6.6.1 https://jrsoftware.org/isdl.php
 
 ## Installer

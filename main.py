@@ -12,7 +12,7 @@ from PySide6.QtGui import (
 )
 from PySide6.QtCore import Qt, Signal, QSettings
 
-import api
+import module
 import render
 
 class PageScrollArea(QScrollArea):
@@ -46,7 +46,7 @@ class SettingsDialog(QDialog):
     def __init__(self, parent, fonts, current_font, current_size, current_theme, current_lang):
         super().__init__(parent)
         self.setModal(True)
-        strs = api.LANG_STRINGS[current_lang]
+        strs = module.LANG_STRINGS[current_lang]
         self.setWindowTitle(strs["settings_title"])
 
         self.font_combo = QComboBox()
@@ -95,7 +95,7 @@ class ConvertDialog(QDialog):
     def __init__(self, parent, current_lang):
         super().__init__(parent)
         self.setModal(True)
-        self.setWindowTitle(api.LANG_STRINGS[current_lang]["convert_title"])
+        self.setWindowTitle(module.LANG_STRINGS[current_lang]["convert_title"])
         
         self.mode_combo = QComboBox()
         self.mode_combo.addItem("Text -> PDF", "text_pdf")
@@ -163,11 +163,11 @@ class ConvertDialog(QDialog):
         
         try:
             if mode == "text_pdf":
-                api.ConverterLogic.text_to_pdf(self.input_paths[0], self.output_path, pw)
+                module.ConverterLogic.text_to_pdf(self.input_paths[0], self.output_path, pw)
             elif mode == "text_epub":
-                api.ConverterLogic.text_to_epub(self.input_paths[0], self.output_path)
+                module.ConverterLogic.text_to_epub(self.input_paths[0], self.output_path)
             elif mode == "images_pdf":
-                api.ConverterLogic.images_to_pdf(self.input_paths, self.output_path, pw)
+                module.ConverterLogic.images_to_pdf(self.input_paths, self.output_path, pw)
             
             QMessageBox.information(self, "Success", "Conversion completed.")
             self.accept()
@@ -178,7 +178,7 @@ class FeReaderWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         
-        self.cfg_mgr = api.ConfigManager()
+        self.cfg_mgr = module.ConfigManager()
         self.settings = QSettings("Neofilisoft", "FeReader")
         
         self.renderer = render.RenderEngine()
@@ -197,7 +197,7 @@ class FeReaderWindow(QMainWindow):
         self._continuous_needs_build = True
 
         self._load_user_fonts()
-        self.setWindowTitle(f"FeReader - Version {api.APP_VERSION}")
+        self.setWindowTitle(f"FeReader - Version {module.APP_VERSION}")
         self.resize(1600, 900)
 
         # UI Components
@@ -236,7 +236,7 @@ class FeReaderWindow(QMainWindow):
         self.apply_language()
 
     def tr(self, key):
-        bundle = api.LANG_STRINGS.get(self.language, api.LANG_STRINGS["en"])
+        bundle = module.LANG_STRINGS.get(self.language, module.LANG_STRINGS["en"])
         return bundle.get(key, key)
 
     def closeEvent(self, event):
@@ -257,9 +257,9 @@ class FeReaderWindow(QMainWindow):
         self.cfg_mgr.save()
 
     def _load_user_fonts(self):
-        for name in os.listdir(api.APP_DIR):
+        for name in os.listdir(module.APP_DIR):
             if name.lower().endswith((".ttf", ".otf")):
-                try: QFontDatabase.addApplicationFont(os.path.join(api.APP_DIR, name))
+                try: QFontDatabase.addApplicationFont(os.path.join(module.APP_DIR, name))
                 except: pass
 
     def apply_language(self):
